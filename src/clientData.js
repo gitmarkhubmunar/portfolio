@@ -9,7 +9,7 @@ const clients = {
 			'skully.icons.jpg',
 		],
 		assets: [
-			'skully.casestudy.mp4',
+			'launchingsoon.png',
 		],
 		previewAsset: 'launchingsoon.png',
 	},
