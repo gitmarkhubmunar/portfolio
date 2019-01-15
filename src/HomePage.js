@@ -110,17 +110,9 @@ class HomePage extends Component {
         activeIndex = 0
       }
       // console.log(textTimeline[activeIndex])
-      this.mounted && this.setState({ currentGreeting: textTimeline[activeIndex] })
+      this.setState({ currentGreeting: textTimeline[activeIndex] })
       //instead of console.log, use React's setState — then in your function welcomeGreeeting, return this state instead of its current "choose a random language" logic
     }, 100)
-  }
-
-  componentDidMount () {
-    this.mounted = true
-  }
-
-  componentWillUnmount () {
-    this.mounted = false
   }
 
   navigateToPastClients = () => {

@@ -1,48 +1,61 @@
-import _ from 'lodash'
 import React, { Component } from 'react'
 
 import DisplayZone from './DisplayZone'
 import LogInBox from './LogInBox'
 import Nav from './Nav'
-import { canUserViewClient } from './utilities'
 
 class ClientPage extends Component {
 	constructor (props) {
-		super(props)
-		const clientCode = props.match.params.name
-		const client = props.clients[props.match.params.name]
+		super (props)
+
 		this.state = {
-			canView: canUserViewClient(client),
-			client,
-			clientCode,
+			clientName: props.match.params.name,		// From URL
+			// the user loaded up http://jeffmunar.com/client/skully
+	    // ReactRouter defines the last bit of the URL as this.props.match.params.name, so...
+	    // clientNameInUrl === 'skully'
+
+			client: props.clients[props.match.params.name]		// From client data object
+			// this.props.clients[clientNameInUrl] means "look in this.props.clients for an item
+	    // called whatever clientNameInUrl stands for right now", so...
+	    // this.props.clients['skully']
+	    // and what we get is that particular client, so...
+	    // selectedClient === skully: {
+			// 	name: 'Skully Brand',
+			// 	description: 'A description of the Skully client',
+			// 	assets: [
+			// 		'skully.poster.jpg',
+			// 		'skully.casestudy.mp4',
+			//		etc.
+			// 	],
+			// },
 		}
 	}
 
 	componentWillUpdate (nextProps) {
-		let nextCode = nextProps.match.params.name
-		let lastCode = this.state.clientCode
-		if (nextCode !== lastCode) {
+		let nextName = nextProps.match.params.name
+		let lastName = this.state.clientName
+		if (nextName !== lastName) {
 			this.setState({
-				canView: canUserViewClient(nextProps.clients[nextCode]),
-				client: this.props.clients[nextCode],
-				clientCode: nextCode,
+				clientName: nextName,
+				client: this.props.clients[nextName]
 			})
 		}
 	}
 
 	render () {
-		const { clients } = this.props
-		const { canView, client, clientCode } = this.state
+		const { clients, isLoggedIn, orderedClientList } = this.props
+		const { client, clientName } = this.state
 
-		if (_.isEmpty(client)) {
+		if (!client) {
 			return (
 				<div className="clientpage center-all" style={{ height: '100vh' }}>
-					<div>Sorry, there’s no <strong>{clientCode}</strong> here.</div>
+					<div>Sorry, there’s no <strong>{clientName}</strong> here.</div>
 				</div>
 			)
 		}
 
-		if (canView === false) {
+		const needsPassword = client.protected === true && isLoggedIn === false
+		if (needsPassword) {
 			return (
 				<div className="clientpage center-all" style={{ height: '100vh' }}>
 					{client.previewAsset ?
@@ -51,8 +64,8 @@ class ClientPage extends Component {
 						<div>Ask Jeff for the password.</div>
 					}
 					<LogInBox
-						client={client}
-						onCorrectPassword={() => this.setState({ canView: true })}
+						whichClient={clientName}
+						onCorrectPassword={this.props.onLogIn}
 						showCloseButton={false}
 					/>
 				</div>
@@ -62,14 +75,15 @@ class ClientPage extends Component {
 		return (
       <div className="clientpage">
  				<DisplayZone
-	 				key={clientCode}
+	 				key={clientName}
       		assets={client.assets}
       	/>
 	      <Nav
 	      	clients={clients}
-	      	currentlyAt={clientCode}
+	      	currentlyAt={clientName}
 	      	description={client.description}
 	      	name={client.name}
+	      	orderedClientList={orderedClientList}
 	      	{...this.props}
 	      />
 	    </div>
