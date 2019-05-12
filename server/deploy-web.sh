@@ -22,7 +22,7 @@ if [ -d $GIT_BASE_DIR/$GIT_SUBDIR ]; then
   
   echo "Grabbing latest copy of repository from Github."
   cd $GIT_BASE_DIR/$GIT_SUBDIR
-  /usr/bin/git pull &>/dev/null
+  git pull &>/dev/null
   
 else
   
@@ -30,14 +30,14 @@ else
   echo "Oh well. Let's rebuild it."
   
   cd $GIT_BASE_DIR
-  /usr/bin/git clone $GH_MASTER $GIT_SUBDIR &>/dev/null
+  git clone $GH_MASTER $GIT_SUBDIR &>/dev/null
   cd $GIT_SUBDIR
-  /usr/bin/npm install &>/dev/null
+  npm install &>/dev/null
   
 fi
   
 echo "Building production-ready site."
-/usr/bin/npm run build &>/dev/null
+npm run build &>/dev/null
 
 # echo "Stopping existing server processes."
 # killall node &>/dev/null;
