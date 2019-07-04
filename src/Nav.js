@@ -108,9 +108,9 @@ class Nav extends Component {
         <h3>{this.props.name}</h3>
         <div className="description">{this.props.description}</div>     	
   			<div className='navPanel'> 
-        	<a className='previousbutton' onClick={(clientName) => this.navigateToClient(list[previousIndex])}>&lt;</a> 
-        	<a className='homebutton' onClick={() => this.navigateToHome()}>home</a> 
-  				<a className='nextbutton' onClick={(clientName) => this.navigateToClient(list[nextIndex])}>&gt;</a>
+        	<div className='previousbutton' onClick={(clientName) => this.navigateToClient(list[previousIndex])}>&lt;</div> 
+        	<div className='homebutton' onClick={() => this.navigateToHome()}>home</div> 
+  				<div className='nextbutton' onClick={(clientName) => this.navigateToClient(list[nextIndex])}>&gt;</div>
         </div>
 
       </section>

@@ -59,7 +59,7 @@ class ClientPage extends Component {
 			return (
 				<div className="clientpage center-all" style={{ height: '100vh' }}>
 					{client.previewAsset ?
-						<img src={'../../assets/' + client.previewAsset} style={{ maxWidth: '80%' }} />
+						<img src={'../../assets/' + client.previewAsset} style={{ maxWidth: '80%' }} alt={clientName} />
 						:
 						<div>Ask Jeff for the password.</div>
 					}

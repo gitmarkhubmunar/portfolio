@@ -132,14 +132,14 @@ class HomePage extends Component {
   render () {
     const { clients } = this.props
     const homeClassName = 'home'
-    const gridClassName = 'pastworkgrid'
-    const gridLogoClassName = 'gridlogo'
+    // const gridClassName = 'pastworkgrid'
+    // const gridLogoClassName = 'gridlogo'
 
-    const welcomeGreeting = () => {
-      const greetingsList = ['Welcome', 'Yello', 'Ahoy!', 'Salut.']
-      const greetingChoice = Math.floor(Math.random()*4)
-      return greetingsList[greetingChoice]
-    }
+    // const welcomeGreeting = () => {
+    //   const greetingsList = ['Welcome', 'Yello', 'Ahoy!', 'Salut.']
+    //   const greetingChoice = Math.floor(Math.random()*4)
+    //   return greetingsList[greetingChoice]
+    // }
 
     return (
       <div className={homeClassName}>
@@ -203,7 +203,7 @@ class HomePage extends Component {
             <h3>
               Past Clients
             </h3>
-            <a onClick={this.navigateToPastClients} className='clientLink'>View Client List</a>
+            <div onClick={this.navigateToPastClients} className='clientLink'>View Client List</div>
           </div>
         </section>
       </div>

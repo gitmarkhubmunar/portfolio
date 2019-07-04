@@ -29,11 +29,13 @@ class App extends React.Component {
       	if (currentClient.recent === true) {
       		calculatedList.push(clientName)
       	}
+        return currentClient
       })
   	}
   	else {
   		Object.keys(clients).map(clientName => {
   			calculatedList.push(clientName)
+            return clientName
   		})
   	}
 

@@ -49,7 +49,7 @@ class DisplayZone extends Component {
     				if (fileName.includes('png') || fileName.includes('gif') || fileName.includes('jpg')) {
     					return (
     						<div key={i} className='asset'>
-    							<img src={'../../assets/' + fileName} role='presentation' />
+    							<img src={'../../assets/' + fileName} alt='' />
     						</div>
     					)
     				}
@@ -60,7 +60,8 @@ class DisplayZone extends Component {
     				  return ( 
     				    <div key={i} className='asset'>
                   <iframe 
-        				    src={fileName} 
+        				    src={fileName}
+                            title={fileName}
         				    width='640' 
         				    height='360' 
         				    frameBorder='0' 
