@@ -184,12 +184,17 @@ h3 {
 .clientLink {
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  color: gray !important;
   font-weight: 700;
   font-size: 18px;
+  color: gray;
   line-height: 22px;
   transition: 0.5s all;
   cursor: pointer;
+  display: inline-block;
+}
+
+.recent>.clientLink {
+  color: gray;
 }
 
 .clientLink:hover {
@@ -415,7 +420,7 @@ here it means "select the element that has BOTH these class names" */
 
 }
 .homebutton {
-  padding-right: 7px !important;
+  padding: 0px 7px;
   margin-top: -2px;
   font-size: 12px;
   font-family:'Overpass Mono', monospace;
@@ -423,15 +428,23 @@ here it means "select the element that has BOTH these class names" */
   letter-spacing: .2em;
   text-transform: uppercase;
   cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */   
 }
 
 .nextbutton {
   font-family:'julius Sans One';
   font-size: 23px;
-  font-weight: light;
+  font-weight: lighter;
   margin-top: -2px;
   display: flex;
   cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */   
 } 
 
 .previousbutton{
@@ -441,6 +454,10 @@ here it means "select the element that has BOTH these class names" */
   margin-top: -2px;
   display: flex;
   cursor: pointer;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */   
 }
 
 @keyframes home-logo-spin {
@@ -615,7 +632,7 @@ here it means "select the element that has BOTH these class names" */
   }
 
   .gridlogo.googlemaps img {
-    min-width: 85px !important;
+    min-width: 85px;
   }
 
   .gridlogo.chanel img {
@@ -714,7 +731,7 @@ here it means "select the element that has BOTH these class names" */
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: url('../public/assets/trigger.mobile.l.gif');
+  background: url('/public/assets/trigger.mobile.l.gif');
   background-size: cover;
 }
 

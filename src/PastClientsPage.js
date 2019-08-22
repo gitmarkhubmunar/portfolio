@@ -443,7 +443,7 @@ class PastClientsPage extends Component {
     }
 
     return (
-      <div key={name} style={triggerStyle} className='trigger-background'>
+      <div key={window.name} style={triggerStyle} className='trigger-background'>
         {allTriggerAssets.map((assetName, i) => {
           const width = this.state.assetDimensions[assetName].width
           const height = this.state.assetDimensions[assetName].height
@@ -468,6 +468,7 @@ class PastClientsPage extends Component {
                 width={width}
                 height={height}
                 role='presentation'
+                alt=''
               />
             )
           }
@@ -512,7 +513,7 @@ class PastClientsPage extends Component {
       <div className={homeClassName}>
         <section className='home-header'> 
           <div className='column1'>
-            <h1><a onClick={this.navigateToHome}>
+            <h1><a href='/' onClick={this.navigateToHome}>
             <div style={{width: "49px", height: "49px"}}>
                 <Newtongue haikuOptions={{loop: false, sizing: 'cover'}} />
               </div></a></h1>
@@ -554,7 +555,7 @@ class PastClientsPage extends Component {
                       
                       if (currentClient.recent === false) {
                         return (
-                          <a
+                          <div
                             className={gridLogoClassName + ' ' + clientName}
                             key={i}
                             onClick={() => this.handlePastClientClick(clientName)}> 
@@ -564,10 +565,10 @@ class PastClientsPage extends Component {
                                 onMouseEnter={() => !this.state.isMobile && this.activateTrigger(clientName)}
                                 onMouseLeave={() => !this.state.isMobile && this.deactivateTrigger()}
                                 src={'../assets/' + currentClient.logo}
-                                role='presentation'
+                                alt=''
                               />
                             </div>
-                          </a>
+                          </div>
                         )
                       }
                       // If it’s not recent, we still need to return something (.map requires that)
