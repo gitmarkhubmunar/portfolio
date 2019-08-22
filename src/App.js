@@ -7,7 +7,7 @@ import PastClientsPage from './PastClientsPage'
 
 // Import client data and make shortcuts to each bit of data
 import clientData from './clientData'
-import MaintenancePage from './MaintenancePage'
+//import MaintenancePage from './MaintenancePage'
 
 
 class App extends React.Component {
