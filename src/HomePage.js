@@ -188,7 +188,9 @@ class HomePage extends Component {
             {
               _.keys(clients).map((clientName, i) => {
                 const client = clients[clientName]
-                if (client.recent === true && client.protected === false) {
+                if (client.recent === true && client.hasOwnProperty('href')) {
+                  return <a key={i} href={client.href} className='currentClientLink clientLink'>{client.name}</a>
+                } else if (client.recent === true && client.protected === false) {
                   return <a key={i} href={'/client/' + clientName} className='currentClientLink clientLink'>{client.name}</a>
                 }
                 else if (client.recent === true && client.protected === true) {

@@ -1,4 +1,19 @@
 const clients = {
+	diez: {
+		name: 'Diez',
+		description: 'CSR description to come.',
+		protected: false,
+		recent: true,
+		logo: 'wta.logo.svg',
+		trigger: [ 
+			'skully.icons.jpg',
+		],
+		assets: [
+			'launchingsoon.png',
+		],
+		previewAsset: 'launchingsoon.png',
+		href: 'https://diez.org/',
+	},
 	csr: {
 		name: 'Courage Health',
 		description: 'CSR description to come.',
