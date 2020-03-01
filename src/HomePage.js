@@ -177,10 +177,15 @@ class HomePage extends Component {
 
 
           <p className='home-intro'>
-            I’m Jeff Munar, an independent creative specializing in brand
-            identity, art direction and design. I reside in San Francisco
-            where I’m currently making sense of pixels, garment pod systems
-            and digitizing the dandy.
+            I'm Jeff Munar, an independent creative specializing in brand identity, 
+            art direction, and design. Currently, I make sense of pixels for creative 
+            tools of the modern web, audiovisual integration, cancer data, and the Pinoy 
+            diaspora; work influenced by fellow radicals who want to do good in the world.
+            </p> 
+            <br />
+           <p className='home-intro'>
+            Doggos, family, and mind-body are my current obsessions. I also don't mind 
+            watching good mukbang once in a while. 
           </p>
 
           <div className='recent'>
