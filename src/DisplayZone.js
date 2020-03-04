@@ -37,7 +37,7 @@ class DisplayZone extends Component {
     				if (fileName.includes('mp4') || fileName.includes('mov')) {
     					return (
     						<div key={i} className='asset'>
-				    			<video autoPlay loop>
+				    			<video autoPlay loop playsInline controls>
 				    				<source src={'../../assets/' + fileName} />
 				    			</video>
 				    		</div>
