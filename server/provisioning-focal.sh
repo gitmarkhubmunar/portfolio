@@ -17,6 +17,7 @@ OUTPUT_LOG=output.log
 ERROR_LOG=error.log
 EXPECTED_ERRORS=15
 USER_NAME=$(whoami)
+PRODUCTION=false
 
 sudo echo ""
 
@@ -31,7 +32,7 @@ sudo apt dist-upgrade -y >>$OUTPUT_LOG 2>>$ERROR_LOG
 sudo apt autoremove -y >>$OUTPUT_LOG 2>>$ERROR_LOG
 
 echo "( 3/$TOTAL_STEPS) Installing software."
-sudo apt install build-essential linux-headers-generic net-tools nginx npm node-gyp openssh-server python-certbot-nginx software-properties-common -y >>$OUTPUT_LOG 2>>$ERROR_LOG
+sudo apt install build-essential git linux-headers-generic net-tools nginx npm node-gyp openssh-server python3-certbot-nginx software-properties-common -y >>$OUTPUT_LOG 2>>$ERROR_LOG
 
 # Add user to group
 echo "( 4/$TOTAL_STEPS) Adding user '$USER_NAME' to group 'www-data'."
@@ -46,7 +47,7 @@ sudo chmod -R 0775 /var/www
 
 # Grab latest copy of repository
 echo "( 6/$TOTAL_STEPS) Grabbing latest copy of repository."
-# git clone https://github.com/gitmarkhubmunar/portfolio.git ~/portfolio >>$OUTPUT_LOG 2>>/dev/null
+git clone https://github.com/gitmarkhubmunar/portfolio.git ~/portfolio >>$OUTPUT_LOG 2>>/dev/null
 
 echo "( 7/$TOTAL_STEPS) Installing portfolio node dependencies."
 cd ~/portfolio
@@ -71,7 +72,12 @@ sudo mkdir -p /etc/nginx/sites-enabled
 sudo chown -R $USER_NAME /etc/nginx/sites-available
 sudo chown -R $USER_NAME /etc/nginx/sites-enabled
 sudo chown -R $USER_NAME /etc/nginx/snippets
-cp /home/jeff/portfolio/server/thevisual-nginx.conf /etc/nginx/sites-available/thevisual.conf
+if [[ PRODUCTION = true ]]
+then
+    cp /home/jeff/portfolio/server/thevisual-nginx-prod.conf /etc/nginx/sites-available/thevisual.conf
+else
+    cp /home/jeff/portfolio/server/thevisual-nginx-test.conf /etc/nginx/sites-available/thevisual.conf
+fi
 ln -s /etc/nginx/sites-available/thevisual.conf /etc/nginx/sites-enabled/thevisual.conf
 cp /home/jeff/portfolio/server/common-nginx.conf /etc/nginx/snippets/common.conf
 cp /home/jeff/portfolio/server/ssl-nginx.conf /etc/nginx/snippets/ssl.conf
