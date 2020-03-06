@@ -1,9 +1,9 @@
 #!/bin/bash
 
-## provisioning-eoan.sh 1.0
+## provisioning-focal.sh 1.0
 ## Spencer Wohlers
 
-## This script takes a fresh Ubuntu Server 19.10 "Eoan Ermine" install and
+## This script takes a fresh Ubuntu Server 20.04 "Focal Fossa" install and
 ## configures it for use as a server for The Visual, Jeff's portfolio website.
 
 ## Differences over Bionic Beaver:
@@ -11,6 +11,7 @@
 ## - switch to non-privileged user
 ## - switch to apt instead of apt-get
 ## - TLS 1.3 support
+## - switch to nvm for node installation
 
 TOTAL_STEPS=13
 OUTPUT_LOG=output.log
@@ -32,7 +33,12 @@ sudo apt dist-upgrade -y >>$OUTPUT_LOG 2>>$ERROR_LOG
 sudo apt autoremove -y >>$OUTPUT_LOG 2>>$ERROR_LOG
 
 echo "( 3/$TOTAL_STEPS) Installing software."
-sudo apt install build-essential git linux-headers-generic net-tools nginx npm node-gyp openssh-server python3-certbot-nginx software-properties-common -y >>$OUTPUT_LOG 2>>$ERROR_LOG
+sudo apt install build-essential git linux-headers-generic net-tools nginx openssh-server python3-certbot-nginx software-properties-common wget -y >>$OUTPUT_LOG 2>>$ERROR_LOG
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash >>$OUTPUT_LOG 2>>$ERROR_LOG
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install node --lts
 
 # Add user to group
 echo "( 4/$TOTAL_STEPS) Adding user '$USER_NAME' to group 'www-data'."
