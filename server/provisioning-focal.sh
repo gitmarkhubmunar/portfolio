@@ -121,8 +121,6 @@ sudo systemctl start nginx >>$OUTPUT_LOG 2>>$ERROR_LOG
 echo ""
 
 NUM_ERRORS=$(cat $ERROR_LOG | wc -l)
-echo "Number of errors: $NUM_ERRORS"
-echo "Expected errors: $EXPECTED_ERRORS"
 
 if (( NUM_ERRORS > EXPECTED_ERRORS )); then
     (( NUM_ERRORS = NUM_ERRORS - EXPECTED_ERRORS ))
