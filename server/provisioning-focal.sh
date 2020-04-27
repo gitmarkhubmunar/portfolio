@@ -19,7 +19,7 @@ OUTPUT_LOG=$DIR/provisioning-output.log
 ERROR_LOG=$DIR/provisioning-error.log
 EXPECTED_ERRORS=30
 USER_NAME=$(whoami)
-PRODUCTION=false
+PRODUCTION=true
 
 sudo echo ""
 
