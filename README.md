@@ -37,17 +37,24 @@ For ease of setup, scripts are provided for deployment to Ubuntu 17.10 and Ubunt
 These scripts assume a user 'jeff' is on the system.
 
 ### From Ubuntu 17.10:
-```
+```shell
 $ cd
 $ wget --quiet https://raw.githubusercontent.com/gitmarkhubmunar/portfolio/master/server/provisioning-artful.sh && chmod +x provisioning-artful.sh && sudo ./provisioning-artful.sh
 $ rm provisioning-artful.sh
 ```
 
 ### From Ubuntu 18.04:
-```
+```shell
 $ cd
 $ wget --quiet https://raw.githubusercontent.com/gitmarkhubmunar/portfolio/master/server/provisioning-bionic.sh && chmod +x provisioning-bionic.sh && sudo ./provisioning-bionic.sh
 $ rm provisioning-bionic.sh
+```
+
+### From Ubuntu 20.04
+```shell
+$ cd
+$ git clone https://github.com/gitmarkhubmunar/portfolio.git
+$ portfolio/server/provisioning-focal.sh
 ```
 
 ## Deployment
