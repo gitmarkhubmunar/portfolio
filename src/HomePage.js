@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import Newtongue from '@haiku/thev1sual-newtongue/react'
+import Newtongue from 'thevisual-newtongue/react'
 
 class HomePage extends Component {
   constructor (props) {

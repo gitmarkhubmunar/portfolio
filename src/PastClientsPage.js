@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import isMobile from 'is-mobile';
 
 import LogInBox from './LogInBox'
-import Newtongue from '@haiku/thev1sual-newtongue/react'
+import Newtongue from 'thevisual-newtongue/react'
 
 function AccurateInterval (duration, callback) {
   this.baseline = undefined

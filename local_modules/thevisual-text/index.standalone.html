@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text (Standalone Vanilla Browser Bundle) | Haiku</title>
+  <style>
+    html,
+    body,
+    #mount {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="mount"></div>
+  <script src="./index.standalone.js"></script>
+  <script>
+    try {
+      var mount = document.getElementById('mount')
+      HaikuComponent_TheVisual_Text(mount)
+    } catch (exception) {
+      var message = [
+        'Haiku was unable to launch this application as a browser bundle.',
+        'Error was: ' + exception.message
+      ].join(' ')
+      console.error(message)
+      mount.innerHTML = message
+    }
+  </script>
+</body>
+</html>

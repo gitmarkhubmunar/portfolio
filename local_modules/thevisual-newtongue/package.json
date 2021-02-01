@@ -1,0 +1,17 @@
+{
+  "name": "@haiku/thev1sual-newtongue",
+  "version": "0.0.6",
+  "haiku": {
+    "organization": "TheV1sual",
+    "project": "Newtongue"
+  },
+  "authors": [
+    "Haiku User",
+    "Haiku <contact@haiku.ai>"
+  ],
+  "license": "LicenseRef-LICENSE",
+  "main": "index.js",
+  "dependencies": {
+    "@haiku/core": "3.1.4"
+  }
+}

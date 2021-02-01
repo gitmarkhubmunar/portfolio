@@ -6,8 +6,8 @@
     "react-scripts": "^4.0.1"
   },
   "dependencies": {
-    "@haiku/thev1sual-newtongue": "0.0.6",
-    "@haiku/thevisual-text": "latest",
+    "thevisual-newtongue": "file:./local_modules/thevisual-newtongue",
+    "thevisual-text": "file:./local_modules/thevisual-text",
     "classnames": "2.2.6",
     "eslint": "^7.2.0",
     "is-mobile": "2.2.2",
