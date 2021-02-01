@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 import DisplayZone from './DisplayZone'
 import LogInBox from './LogInBox'
@@ -40,6 +41,14 @@ class ClientPage extends Component {
 				client: this.props.clients[nextName]
 			})
 		}
+	}
+
+	componentDidUpdate() {
+		ReactDOM.findDOMNode(this).scrollIntoView();
+	}
+
+	componentDidMount() {
+		ReactDOM.findDOMNode(this).scrollIntoView();
 	}
 
 	render () {
