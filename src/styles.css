@@ -731,7 +731,6 @@ here it means "select the element that has BOTH these class names" */
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: url('/public/assets/trigger.mobile.l.gif');
   background-size: cover;
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import isMobile from 'is-mobile';
 
 import LogInBox from './LogInBox'
-import Newtongue from '@haiku/thev1sual-newtongue/react'
+import Newtongue from 'thevisual-newtongue/react'
 
 function AccurateInterval (duration, callback) {
   this.baseline = undefined
@@ -583,7 +583,9 @@ class PastClientsPage extends Component {
           }
 
           {this.state.isMobile &&
-            <div className='trigger-mobile'>
+            <div className='trigger-mobile' style={{ 
+              backgroundImage: `url(${process.env.PUBLIC_URL + '/public/assets/trigger.mobile.l.gif'})` 
+            }}>
               <div className='darkoverlay'></div>
             </div>
           }
