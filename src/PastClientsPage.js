@@ -583,7 +583,9 @@ class PastClientsPage extends Component {
           }
 
           {this.state.isMobile &&
-            <div className='trigger-mobile'>
+            <div className='trigger-mobile' style={{ 
+              backgroundImage: `url(${process.env.PUBLIC_URL + '/public/assets/trigger.mobile.l.gif'})` 
+            }}>
               <div className='darkoverlay'></div>
             </div>
           }
