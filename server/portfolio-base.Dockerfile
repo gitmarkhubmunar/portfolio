@@ -22,7 +22,10 @@ USER $USER_ID:$GROUP_ID
 
 # Clone the repository
 WORKDIR /app
-RUN git clone https://github.com/seidior/portfolio.git . > /dev/null 2>&1
+RUN git clone https://github.com/gitmarkhubmunar/portfolio.git . > /dev/null 2>&1
+
+RUN yarn set version berry && \
+    echo "nodeLinker: node-modules" >> .yarnrc.yml
 
 # Install the Node dependencies and cache them for faster updates
 RUN yarn install --silent > /dev/null 2>&1
