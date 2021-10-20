@@ -1,0 +1,66 @@
+version: "3.8"
+services:
+  base:
+    container_name: base
+    build:
+      dockerfile: portfolio-base.Dockerfile
+      context: .
+    environment:
+      - TZ=America/Los_Angeles
+    restart: "no"
+  updater:
+    container_name: updater
+    build:
+      dockerfile: portfolio-updater.Dockerfile
+      context: .
+    restart: "no"
+    environment:
+      - TZ=America/Los_Angeles
+    depends_on:
+      base:
+        condition: service_completed_successfully
+    volumes:
+      - htdocs:/var/www/thevisual.work
+  server:
+    build:
+      dockerfile: portfolio-server.Dockerfile
+      context: .
+    container_name: portfolio
+    hostname: thevisual.work
+    restart: "no"
+    tty: true
+    depends_on:
+      updater:
+        condition: service_completed_successfully
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+    environment:
+      - TZ=America/Los_Angeles
+    volumes:
+      - logs:/var/log/nginx
+      - certs:/etc/certs:ro
+    volumes_from:
+      - updater
+
+volumes:
+  logs:
+    name: logs
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/logs/nginx
+      o: bind
+  certs:
+    name: certs
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/certs
+      o: bind
+  htdocs:
+    name: htdocs
+
+networks:
+  default:
+    name: web

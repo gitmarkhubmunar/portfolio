@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  certbot-init:
+    image: certbot/dns-linode:latest
+    command: 'certonly --rsa-key-size 4096 -d "thevisual.work,*.thevisual.work" -n --agree-tos -m jeff@thevisual.work --dns-linode --dns-linode-credentials /etc/letsencrypt/linode.ini --dns-linode-propagation-seconds 60'
+    container_name: certbot-init
+    restart: "no"
+    volumes:
+      - certs-certbot:/etc/letsencrypt:rw
+      - logs-certbot:/var/log/letsencrypt
+  certbot-renew:
+    image: certbot/dns-linode:latest
+    command: "renew --rsa-key-size 4096 -n --agree-tos -m jeff@thevisual.work --dns-linode --dns-linode-credentials /etc/letsencrypt/linode.ini --dns-linode-propagation-seconds 60"
+    container_name: certbot-renew
+    restart: "no"
+    volumes:
+      - certs-certbot:/etc/letsencrypt:rw
+      - logs-certbot:/var/log/letsencrypt
+
+volumes:
+  certs-certbot:
+    name: certs-certbot
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/certs
+      o: bind
+  logs-certbot:
+    name: logs-certbot
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/logs/certbot
+      o: bind
