@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import HomePage from './HomePage'
 import ClientPage from './ClientPage'
@@ -8,7 +8,6 @@ import PastClientsPage from './PastClientsPage'
 // Import client data and make shortcuts to each bit of data
 import clientData from './clientData'
 //import MaintenancePage from './MaintenancePage'
-
 
 class App extends React.Component {
 	constructor (props) {
@@ -88,14 +87,28 @@ class App extends React.Component {
 				/>
 			)
 		}
+    
+    const NotFound = (props) => {
+      if (props.match.path !== "/") {
+        return (
+          <p>
+            We’re sorry, but we cannot find the page you requested:
+            <code>{props.location.pathname}</code>
+          </p>
+        );
+      } else {
+        return null;
+      }
+    }
 
 		return (
 		  <Router {...props}>
 		  	<div>
-		  		<Route exact path='/' render={renderHomePage} />
-			    <Route path='/client/:name' render={renderClientPage} />
-	        <Route path='/pastclients' render={renderPastClientsPage} />
-			    {/*<Route path='*' component={NotFound} />*/}
+          <Route exact path="/" component={renderHomePage} />
+          <Route path="/client/:name" component={renderClientPage} />
+          <Route path="/pastclients" component={renderPastClientsPage} />
+          <Route path="/404" component={NotFound} />
+          <Route component={NotFound} />
 			  </div>
 		  </Router>
 		)
