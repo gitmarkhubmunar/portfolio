@@ -1,7 +1,22 @@
 const clients = {
+	elroy: {
+		name: 'Elroy Air',
+		description: '',
+		protected: false,
+		recent: true,
+		logo: '',
+		trigger: [
+
+		],
+		assets: [
+
+		],
+		previewAsset: '',
+		href: 'https://www.elroyair.com/'
+	},
 	diez: {
 		name: 'Diez',
-		description: 'CSR description to come.',
+		description: '',
 		protected: false,
 		recent: true,
 		logo: 'wta.logo.svg',
@@ -16,9 +31,9 @@ const clients = {
 	},
 	csr: {
 		name: 'Courage Health',
-		description: 'CSR description to come.',
+		description: '',
 		protected: true,
-		recent: true,
+		recent: false,
 		logo: 'wta.logo.svg',
 		trigger: [ 
 			'skully.icons.jpg',
