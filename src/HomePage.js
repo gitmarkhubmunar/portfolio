@@ -179,7 +179,7 @@ class HomePage extends Component {
           <p className='home-intro'>
             I'm Jeff Munar, an independent creative specializing in brand identity, 
             art direction, and design. Currently, I make sense of pixels for creative 
-            tools of the modern web, audiovisual integration, cancer data, and the Pinoy 
+            tools of the modern web, aerial cargo logistics, and the Pinoy 
             diaspora; work influenced by fellow radicals who want to do good in the world.
             </p> 
             <br />
