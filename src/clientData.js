@@ -48,7 +48,7 @@ const clients = {
 		description: 'The Skully AR-1 is the world\'s first Augmented Reality motorcycle helmet on the road with a built-in 180° Blindspot Camera and infinite Focus Heads-Up Display.', 
 		protected: false,
 		recent: false,
-		logo: 'c',
+		logo: 'skully.logo.svg',
 		trigger: [ 
 			// 'skully.instagram.mp4',
 			'skully.icons.jpg',
