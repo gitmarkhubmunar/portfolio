@@ -34,7 +34,7 @@ const clients = {
 		description: '',
 		protected: true,
 		recent: false,
-		logo: 'adobe.icon.svg',
+		logo: 'csr.logo.svg',
 		trigger: [ 
 			'skully.icons.jpg',
 		],
