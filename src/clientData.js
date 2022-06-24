@@ -313,7 +313,7 @@ const clients = {
 		description: 'Print brochures for SFGov DCYF',
 		protected: true,
 		recent: false,
-		logo: 'sf.logo.png',
+		logo: 'sf.logo.svg',
 		trigger: [
 			'trig.sfgov.print.jpg',
 			'trig.sfgovdcyf.jpg',
