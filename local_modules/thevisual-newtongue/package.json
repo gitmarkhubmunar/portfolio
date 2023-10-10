@@ -10,7 +10,7 @@
     "zone.js": "~0.8.26"
   },
   "dependencies": {
-    "@angular/core": "^6.0.9",
+    "@angular/core": "^10.2.5",
     "@haiku/core": "^5.1.2"
   }
 }
